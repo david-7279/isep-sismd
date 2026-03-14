@@ -5,6 +5,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class Seller extends Thread {
 
+    // Um Semaphore controla quantas threads podem aceder simultaneamente.
+    // Protege recursos. Cada thread precisa de permissão para usar um recurso.
     private final Semaphore semaphore;
     AtomicInteger numTicket;
 
