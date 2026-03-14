@@ -28,6 +28,27 @@ The system must support transfers between accounts while ensuring data consisten
 Do you think that atomic variables such as AtomicInteger could be used to implement a banking system? Justify your
 answer.
 
+AtomicInteger garante atomicidade de:
+
+- balance++
+- balance--
+
+Mas transferência faz:
+
+- A.balance -= amount
+- B.balance += amount
+
+Ou seja:
+
+- duas variáveis
+- duas operações
+
+AtomicInteger **não garante atomicidade entre duas contas**.
+
+Logo:
+
+> AtomicInteger sozinho **não é suficiente para implementar um sistema bancário correto**.
+
 ---
 
 ### Perspective
