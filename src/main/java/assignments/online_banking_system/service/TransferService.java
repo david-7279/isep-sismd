@@ -7,7 +7,8 @@ import java.math.BigDecimal;
 
 public class TransferService {
 
-    public TransferService(Bank bank) {}
+    public TransferService(Bank bank) {
+    }
 
     // Realiza uma transferência entre duas contas
     public void transfer(Account from, Account to, BigDecimal amount) {
@@ -34,6 +35,12 @@ public class TransferService {
             // Executa a transferência
             from.withdraw(amount);
             to.deposit(amount);
+
+            System.out.println(Thread.currentThread().getName() +
+                    " transfer " + amount +
+                    " from " + from.getId() +
+                    " to " + to.getId()
+            );
 
         } finally {
             // Liberta os locks (ordem inversa da aquisição)
