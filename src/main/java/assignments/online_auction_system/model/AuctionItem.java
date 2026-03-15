@@ -20,7 +20,15 @@ public class AuctionItem {
     }
 
     public boolean placeBid(Bid bid) {
-        lock.lock();
+
+        if (bid == null) {
+            return false;
+        }
+
+        if (!lock.tryLock()) {
+            return false;
+        }
+
         try {
 
             // se ainda não existe bid

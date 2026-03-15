@@ -22,32 +22,44 @@ public class Bidder extends Thread {
         this.random = random;
     }
 
+    private Bid generateBid() {
+
+        // Gerar valor aleatório para a bid
+        int value = random.nextInt(100) + 1;
+        BigDecimal amount = BigDecimal.valueOf(value);
+
+        // Criar objeto Bid
+        return new Bid(userId, amount, LocalDateTime.now());
+    }
+
+    private void logBidResult(Bid bid, boolean accepted) {
+
+        if (accepted) {
+            System.out.println(getName() + " NEW HIGHEST BID: " + bid.getAmount() + " by user " + userId);
+        } else {
+            System.out.println(getName() + " bid rejected: " + bid.getAmount());
+        }
+    }
+
     @Override
     public void run() {
 
         while (!isInterrupted()) {
             try {
 
-                int value = random.nextInt(100) + 1;
-                BigDecimal amount = BigDecimal.valueOf(value);
+                Bid bid = generateBid();
 
-                Bid bid = new Bid(userId, amount, LocalDateTime.now());
-
+                // Tentar colocar bid no leilão
                 boolean accepted = auctionService.placeBid(auctionItem, bid);
 
-                if (accepted) {
-                    System.out.println(getName() + " placed highest bid: " + amount);
-                }
-
-                System.out.println(this.getName() +
-                                " NEW HIGHEST BID: " + amount +
-                                " by user " + userId
-                );
-
+                logBidResult(bid, accepted);
+                
+                // Esperar antes de nova tentativa
                 Thread.sleep(1000);
 
             } catch (InterruptedException e) {
-                System.out.println(this.getName() + " was interrupted");
+                System.out.println(getName() + " was interrupted");
+                interrupt(); // restaurar estado de interrupção
                 break;
             }
         }

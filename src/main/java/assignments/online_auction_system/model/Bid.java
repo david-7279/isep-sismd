@@ -21,7 +21,7 @@ public class Bid {
         this.amount = amount;
         this.timestamp = Objects.requireNonNull(timestamp, "Timestamp cannot be null");
     }
-
+    
     public int getUserId() {
         return userId;
     }
