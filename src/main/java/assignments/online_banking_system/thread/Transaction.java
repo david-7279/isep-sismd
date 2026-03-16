@@ -5,23 +5,23 @@ import main.java.assignments.online_banking_system.model.Bank;
 import main.java.assignments.online_banking_system.service.TransferService;
 
 import java.math.BigDecimal;
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Transaction extends Thread {
 
     private Bank bank;
     private TransferService transferService;
-    private Random random;
+    private final ThreadLocalRandom random;
 
-    public Transaction(Bank bank, TransferService transferService, Random random) {
+    public Transaction(Bank bank, TransferService transferService, ThreadLocalRandom random) {
         this.bank = bank;
         this.transferService = transferService;
         this.random = random;
     }
 
     private BigDecimal generateRandomAmount() {
-        double value = random.nextInt(100) + 1;
-        BigDecimal amount = BigDecimal.valueOf(value);
+        int valueRandom = random.nextInt(100) + 1;
+        BigDecimal amount = BigDecimal.valueOf(valueRandom);
 
         if (amount.compareTo(BigDecimal.ZERO) <= 0) {
             throw new IllegalArgumentException("Amount must be greater than zero");

@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Main {
     public static void main(String[] args) {
@@ -26,7 +27,7 @@ public class Main {
 
         TransferService transferService = new TransferService(bank);
 
-        Random random = new Random();
+        ThreadLocalRandom random = ThreadLocalRandom.current();
 
         // Criar e iniciar várias threads de transações
         for (int i = 0; i < 5; i++) {

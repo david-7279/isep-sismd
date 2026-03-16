@@ -8,7 +8,7 @@ public class Account {
     private BigDecimal balance;
 
     // Lock da conta para controlar acesso concorrente ao saldo
-    // "true" ativa fairness: as threads recebem o lock por ordem de espera
+    // "true" ativa fairness: as threads recebem o lock por ordem de espera FIFO(First-In-First-Out)
     private final ReentrantLock lock = new ReentrantLock(true);
 
     public Account(int id, BigDecimal balance) {
