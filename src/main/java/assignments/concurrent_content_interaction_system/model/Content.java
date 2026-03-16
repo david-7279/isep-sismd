@@ -49,9 +49,22 @@ public class Content {
         reactions.incrementAndGet();
     }
 
-    // Remove reação
+    // Remove reação sem permitir valores negativos (CAS loop)
     public void removeReaction() {
-        reactions.decrementAndGet();
+
+        while (true) {
+
+            int current = reactions.get();
+
+            if (current == 0) {
+                throw new IllegalArgumentException("Reactions cannot be negative");
+            }
+
+            // tenta atualizar atomicamente
+            if (reactions.compareAndSet(current, current - 1)) {
+                reactions.decrementAndGet();
+            }
+        }
     }
 
     // Getters (expor apenas valores)
