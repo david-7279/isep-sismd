@@ -19,6 +19,18 @@ public class Transaction extends Thread {
         this.random = random;
     }
 
+    private BigDecimal generateRandomAmount() {
+        double value = random.nextInt(100) + 1;
+        BigDecimal amount = BigDecimal.valueOf(value);
+
+        if (amount.compareTo(BigDecimal.ZERO) <= 0) {
+            throw new IllegalArgumentException("Amount must be greater than zero");
+        }
+
+        return amount;
+    }
+
+    @Override
     public void run() {
 
         // A thread executa continuamente até ser interrompida
@@ -36,19 +48,18 @@ public class Transaction extends Thread {
                 if (from == to || from == null || to == null) continue;
 
                 // Gera um valor aleatório entre 1 e 100
-                double value = random.nextInt(100) + 1;
-                BigDecimal amount = BigDecimal.valueOf(value);
+                BigDecimal amount = generateRandomAmount();
 
                 // Executa a transferência entre contas
                 transferService.transfer(from, to, amount);
 
-                // Pausa a thread para evitar uso excessivo de CPU1
+                // Pausa a thread para evitar uso excessivo de CPU
                 Thread.sleep(1000);
 
             } catch (InterruptedException e) {
 
                 // Caso a thread seja interrompida, termina a execução
-                System.out.println(this.getName() + " was interrupted");
+                System.out.println(getName() + " was interrupted");
                 break;
             }
         }

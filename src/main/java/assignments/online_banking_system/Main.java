@@ -22,6 +22,7 @@ public class Main {
         }
 
         Bank bank = new Bank(accounts);
+        System.out.println("Total Balance: " + bank.getTotalBalance() + "$");
 
         TransferService transferService = new TransferService(bank);
 

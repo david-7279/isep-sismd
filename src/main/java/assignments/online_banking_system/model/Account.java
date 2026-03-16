@@ -18,8 +18,18 @@ public class Account {
 
     // Adiciona dinheiro ao saldo da conta
     public void deposit(BigDecimal amount) {
-        lock.lock(); // entra na secção crítica
+        // lock.lock();
+
+        // entra na secção crítica
+        if (!lock.tryLock()) {
+            return;
+        }
+
         try {
+
+            if (amount == null || amount.compareTo(BigDecimal.ZERO) <= 0) {
+                throw new IllegalArgumentException("Amount must be greater than zero");
+            }
 
             balance = balance.add(amount);
 
@@ -30,8 +40,18 @@ public class Account {
 
     // Remove dinheiro do saldo da conta
     public void withdraw(BigDecimal amount) {
-        lock.lock(); // entra na secção crítica
+        // lock.lock();
+
+        // entra na secção crítica
+        if (!lock.tryLock()) {
+            return;
+        }
+
         try {
+
+            if (amount == null || amount.compareTo(BigDecimal.ZERO) <= 0) {
+                throw new IllegalArgumentException("Amount must be greater than zero");
+            }
 
             balance = balance.subtract(amount);
 

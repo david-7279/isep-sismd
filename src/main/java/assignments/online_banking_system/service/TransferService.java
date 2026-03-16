@@ -38,8 +38,8 @@ public class TransferService {
 
             System.out.println(Thread.currentThread().getName() +
                     " transfer " + amount +
-                    " from " + from.getId() +
-                    " to " + to.getId()
+                    " from Account: " + from.getId() +
+                    " to Account: " + to.getId()
             );
 
         } finally {
