@@ -75,3 +75,15 @@ pool.
 
 }
 ```
+
+---
+
+## Exercise 2: Using Executors with Callable and Future
+
+The previous exercise allows us to compute partial sums but does not provide a way to retrieve the computed values.
+Modify your implementation to return the computed partial sums so that a global sum can be calculated.
+
+- Modify the Sum class to implement `Callable<Integer>` instead of `Runnable`.
+- Ensure that the task returns the computed sum rather than printing it.
+- Use a `Future<Integer>` to retrieve and store the result of each submitted task.
+- Once all tasks are completed, aggregate the partial sums to obtain the final total sum.
