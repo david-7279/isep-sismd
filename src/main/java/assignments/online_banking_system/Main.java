@@ -16,9 +16,10 @@ public class Main {
 
         // Mapa que irá guardar todas as contas
         Map<Integer, Account> accounts = new HashMap<>();
+        int accountSize = 10;
 
         // Criar 10 contas com saldo inicial
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < accountSize; i++) {
             accounts.put(i, new Account(i, BigDecimal.valueOf(1000)));
         }
 

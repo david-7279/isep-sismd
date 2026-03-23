@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class Bank {
 
-    // // Mapa que associa o ID da conta ao objeto Account
+    // Mapa que associa o ID da conta ao objeto Account
     private Map<Integer, Account> map;
 
     public Bank(Map<Integer, Account> map) {
