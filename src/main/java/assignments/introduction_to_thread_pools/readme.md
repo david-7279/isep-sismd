@@ -37,7 +37,7 @@ pool.
       ```
 
 2. Use a fixed-size thread pool with a predefined number of threads (e.g., 5).
-3. 3Divide the array into a number of partitions greater than the number of available threads (e.g., 10 partitions).
+3. Divide the array into a number of partitions greater than the number of available threads (e.g., 10 partitions).
 4. Instantiate and submit a Sum task for each partition to the Executor. You can use the following starter code for
    this:
 
