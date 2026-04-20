@@ -1,3 +1,4 @@
+package main.java.assignments.image_processing_with_completable_futures.ImageProcessing.src;
 
 import java.awt.Color;
 

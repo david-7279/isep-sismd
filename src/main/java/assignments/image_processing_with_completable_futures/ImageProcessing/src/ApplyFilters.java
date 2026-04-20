@@ -1,3 +1,7 @@
+package main.java.assignments.image_processing_with_completable_futures.ImageProcessing.src;
+
+import main.java.assignments.image_processing_with_completable_futures.ImageProcessing.src.Filters;
+
 import java.io.IOException;
 import java.awt.Color;
 
