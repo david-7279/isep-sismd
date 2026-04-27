@@ -9,13 +9,12 @@
 -module(average).
 -export([average/1]).
 
-average([]) -> [];
 
 sum([]) -> 0;
 sum([H | T]) -> H + sum(T).
 
 count([]) -> 0;
-count([H | T]) -> 1 + count(T);
+count([H | T]) -> 1 + count(T).
 
+average([]) -> [];
 average(L) ->  sum(L) / count(L).
-
