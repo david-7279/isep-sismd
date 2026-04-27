@@ -9,5 +9,4 @@
 -module(square).
 -export([square/1]).
 
-square(X) ->
-  X * X.
+square(X) -> X * X.

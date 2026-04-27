@@ -9,5 +9,4 @@
 -module(temp_convert).
 -export([temp_convert/1]).
 
-temp_convert({C, F}) ->
-  {C, 5(F - 32) / 9}.
+temp_convert(F) -> (F - 32) * 5 / 9.
