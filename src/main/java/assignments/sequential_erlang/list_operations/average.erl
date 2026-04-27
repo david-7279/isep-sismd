@@ -4,10 +4,18 @@
 %%% @doc
 %%%
 %%% @end
-%%% Created : 27. Apr 2026 9:53 PM
+%%% Created : 27. Apr 2026 9:57 PM
 %%%-------------------------------------------------------------------
--module(count).
--export([count/1]).
+-module(average).
+-export([average/1]).
+
+average([]) -> [];
+
+sum([]) -> 0;
+sum([H | T]) -> H + sum(T).
 
 count([]) -> 0;
-count([H | T]) -> 1 + count(T).
+count([H | T]) -> 1 + count(T);
+
+average(L) ->  sum(L) / count(L).
+
