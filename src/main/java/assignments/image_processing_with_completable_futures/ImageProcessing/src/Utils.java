@@ -12,9 +12,9 @@ public class Utils {
  
 
    /**
-   * Loads image from filename into a Color (pixels decribed with rgb values) matrix.
+   * Loads image from filename into a Color (pixels described with rgb values) matrix.
    * 
-   * @param filename the name of the imge in the filesystem.
+   * @param filename the name of the image in the filesystem.
    * @return Color matrix.
    */
   public static Color[][] loadImage(String filename) {
